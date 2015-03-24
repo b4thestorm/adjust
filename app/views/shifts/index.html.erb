@@ -1,0 +1,32 @@
+<h1>Available Shifts</h1> 
+
+
+</br>
+<%if logged_in?%>
+ Hello, <%= current_employee.f_name%>
+</br>
+ <%= link_to 'Add Shift', new_employee_shift_path(current_employee.id)%>
+ <%= link_to 'Logout', logout_path%>
+ <%else%>
+ <%=link_to 'Register', register_path%><br/><br/>
+<%=link_to 'Login', login_path%>
+<%end%>
+
+</br>
+<table border="1" style="width:100%">
+	<tr>
+		<th>Name</th>
+		<th>Start</th>
+		<th>End</th>
+		<th>Position</th>
+	</tr>
+	<tr>
+<!-- Nest iterate through this table structure with employee and then employee.shift -->   
+		<td>f_name</td>
+		<td>start</td>
+		<td>end</td>
+		<td>position</td>
+	</tr>
+</table>
+
+

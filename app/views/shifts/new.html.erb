@@ -1,0 +1,22 @@
+<%= form_for([@shift.employee, @shift]) do |f|%>
+  <div class="field">
+    <%=f.label :Date %>
+    <%=f.date_select :shift_day%>
+  </div>
+  <div class="field">
+    <%= f.label 'Start time' %><br />
+    <%= f.time_select :start, {:ampm => true}%>
+  </div>
+  <div class="field">
+    <%= f.label 'End time'%><br />
+    <%= f.time_select :end , {:ampm => true}%>
+  </div>
+  <div class="field">
+    <%= f.label 'Position'%><br />
+    <%= f.text_field :position%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
