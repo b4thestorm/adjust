@@ -1,7 +1,7 @@
 class ShiftsController < ApplicationController
 
 def index
-	@employees = current_employee
+	@shifts = Shift.all
        
 end
 
@@ -16,11 +16,10 @@ def new
 end
 
 def create
-@employee = current_employee
-@shift = @employee.shifts.new(shift_params)
+@shift = current_employee.shifts.new(shift_params)
 if @shift.save
 	flash[:notice] = "New shift was added"
-	redirect_to employee_shift_path
+	redirect_to employee_shifts_path
 else
 	flash[:notice] = "Shift was not added"
 	render 'new'
@@ -35,7 +34,7 @@ def destroy
 end
 private 
 def shift_params
-params.require(:shift).permit(:shift_day,:start,:end,:position)
+params.require(:shift).permit(:shift_day,:start,:end,:position,:employee_id)
 end
  
 end

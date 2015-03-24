@@ -11,7 +11,7 @@
  <%=link_to 'Register', register_path%><br/><br/>
 <%=link_to 'Login', login_path%>
 <%end%>
-
+</br>
 </br>
 <table border="1" style="width:100%">
 	<tr>
@@ -21,12 +21,13 @@
 		<th>Position</th>
 	</tr>
 	<tr>
-<!-- Nest iterate through this table structure with employee and then employee.shift -->   
-		<td>f_name</td>
-		<td>start</td>
-		<td>end</td>
-		<td>position</td>
+<!-- Nest iterate through this table structure with employee and then employee.shift -->   	<% @shifts.each do |shift| %>
+		<td><%=shift.employee.full_name %></td>
+		<td><%=shift.start.strftime("%I:%M %p") %></td>
+		<td><%=shift.end.strftime("%I:%M %p") %></td>
+		<td><%=shift.position %></td>
 	</tr>
+		<%end%>
 </table>
 
 
