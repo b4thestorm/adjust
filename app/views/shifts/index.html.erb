@@ -1,33 +1,29 @@
-<h1>Available Shifts</h1> 
+<h1>Bulletin</h1> 
+<hr/>
 
 
-</br>
 <%if logged_in?%>
- Hello, <%= current_employee.f_name%>
-</br>
- <%= link_to 'Add Shift', new_employee_shift_path(current_employee.id)%>
- <%= link_to 'Logout', logout_path%>
- <%else%>
- <%=link_to 'Register', register_path%><br/><br/>
-<%=link_to 'Login', login_path%>
-<%end%>
-</br>
-</br>
-<table border="1" style="width:100%">
-	<tr>
+<table border="1" style="width:100%" class="table">
+	<!-- <tr>
 		<th>Name</th>
+		<th>Date<th>
 		<th>Start</th>
 		<th>End</th>
 		<th>Position</th>
-	</tr>
+	</tr> -->
 	<tr>
-<!-- Nest iterate through this table structure with employee and then employee.shift -->   	<% @shifts.each do |shift| %>
+
+<!-- Nest iterate through this table structure with employee and then employee.shift -->   	
+<% @shifts.each do |shift| %>
 		<td><%=shift.employee.full_name %></td>
+		<td><%=shift.shift_day.strftime("%m/%d")%></td>
 		<td><%=shift.start.strftime("%I:%M %p") %></td>
 		<td><%=shift.end.strftime("%I:%M %p") %></td>
-		<td><%=shift.position %></td>
+		<td><%=shift.position%></td>
+		<td><%=link_to 'Notify' ,notify_employee_shift_path(shift.employee_id , shift.id, notify: true), method: 'post', class: "btn btn-success"  %><td>
 	</tr>
 		<%end%>
 </table>
+<%end%>
 
 

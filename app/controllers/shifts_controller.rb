@@ -32,6 +32,16 @@ def destroy
 	@shift.destroy
 	redirect_to root_path
 end
+def notify
+	@shift = Shift.find(params[:id])
+	@employee = current_employee
+	if Notify.create(notifyable: shift , employee: current_employee, notify: params[:notify])
+		ShiftMailer.shift_notify(@shift,@employee).deliver
+	end
+	flash[:notice] = "Coworker has been notified"
+	redirect_to :back
+
+end
 private 
 def shift_params
 params.require(:shift).permit(:shift_day,:start,:end,:position,:employee_id)

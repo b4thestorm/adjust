@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
  
  resources :employees, except: [:new] do
- resources :shifts
+ resources :shifts do
+ member do
+ 	post 'notify'
+ end
+end
 end
 resources :employee_shifts
 get '/register', to: 'employees#new'
