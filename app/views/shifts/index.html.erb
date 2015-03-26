@@ -1,20 +1,22 @@
 <h1>Bulletin</h1> 
+<%if logged_in?%>
+<p>All available shifts<p>
+<%end%>
 <hr/>
 
 
 <%if logged_in?%>
-<table border="1" style="width:100%" class="table">
-	<!-- <tr>
+<table class="table">
+	<tr>
 		<th>Name</th>
 		<th>Date<th>
 		<th>Start</th>
 		<th>End</th>
 		<th>Position</th>
-	</tr> -->
+		<th>Contact<th>
+	</tr>
+		<% @shifts.each do |shift| %> 
 	<tr>
-
-<!-- Nest iterate through this table structure with employee and then employee.shift -->   	
-<% @shifts.each do |shift| %>
 		<td><%=shift.employee.full_name %></td>
 		<td><%=shift.shift_day.strftime("%m/%d")%></td>
 		<td><%=shift.start.strftime("%I:%M %p") %></td>

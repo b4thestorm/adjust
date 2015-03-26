@@ -9,11 +9,13 @@ class ShiftMailer < ActionMailer::Base
   #
   #   en.shift_mailer.shift_notify.subject
   #
-  def shift_notify(@shift, @employee)
-    @employee = @employee.full_name
-    @shift = @shift.employee.full_name
-    @time = @shift.shift_day
+  def shift_notify(shift, employee)
+    @shift = shift.employee.full_name
+    @time = shift.shift_day
+    @employee = employee.full_name
+    @emailemployee = employee.email
+    @email = shift.employee.email
 
-    mail(to: @shift.employee.email, subject:'Interested in your Shift')
+    mail(to: @email, subject:'Interested in your Shift')
   end
 end

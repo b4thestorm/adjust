@@ -12,7 +12,7 @@
 <%if logged_in?%>
  <li><%= link_to 'Add Shift', new_employee_shift_path(current_employee.id)%></li>
  <li><%= link_to 'Logout', logout_path%></li>
- <li>Hello, <%= current_employee.f_name%></li>
+ <li>Hello, <%=link_to current_employee.f_name, employee_path(current_employee.id)%></li>
  <%else%>
  <li><%=link_to 'Register', register_path%></li>
  <li><%=link_to 'Login', login_path%></li>

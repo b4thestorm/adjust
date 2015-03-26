@@ -1,6 +1,18 @@
 <h1>Register</h1>
+</hr>
 
 <%=form_for @employee do |f| %>
+<%if @employee.errors.any?%>
+<div>
+	<h3><%=pluralize(@employee.errors.count,' errors')%> 
+	Prohibited the Form from being sent:</h3>
+	<ul>
+		<%@employee.errors.full_messages.each do |message|%>
+		<li><%= message%></li>
+		<%end%>
+	</ul>
+	<%end%>
+</div>
 <%=f.label :username %>
 <%=f.text_field :username %>
 </br>

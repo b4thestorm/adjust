@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-	
+	before_action :require_employee, only: [:show]
 	def index
 	end
 
@@ -17,6 +17,11 @@ class EmployeesController < ApplicationController
 		else
 			render :new
 		end
+	end
+
+	def show
+		@employee = current_employee
+		@shift = @employee.shifts.all
 	end
 
 	def edit
