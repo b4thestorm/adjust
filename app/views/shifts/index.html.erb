@@ -22,7 +22,11 @@
 		<td><%=shift.start.strftime("%I:%M %p") %></td>
 		<td><%=shift.end.strftime("%I:%M %p") %></td>
 		<td><%=shift.position%></td>
-		<td><%=link_to 'Notify' ,notify_employee_shift_path(shift.employee_id , shift.id, notify: true), method: 'post', class: "btn btn-success"  %><td>
+		<%if shift.employee_id == current_employee.id%>
+		<td>Not Available<td>
+		<%else%>
+		<td><%=link_to 'Notify' ,notify_employee_shift_path(shift.employee_id , shift.id, notify: true), method: 'post', class: "btn btn-success" %><td>
+		<%end%>
 	</tr>
 		<%end%>
 </table>

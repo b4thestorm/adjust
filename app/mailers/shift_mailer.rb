@@ -11,7 +11,7 @@ class ShiftMailer < ActionMailer::Base
   #
   def shift_notify(shift, employee)
     @shift = shift.employee.full_name
-    @time = shift.shift_day
+    @time = shift.shift_day.strftime("%m/%d")
     @employee = employee.full_name
     @emailemployee = employee.email
     @email = shift.employee.email
