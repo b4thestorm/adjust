@@ -13,8 +13,10 @@
   end
 
   def require_employee 
-  	flash[:notice] = "Sorry Charlie" if !logged_in?
-  	redirect_to root_path
-   end
+    if !logged_in?
+  	 flash[:notice] = "Sorry Charlie"
+  	 redirect_to root_path
+    end
+  end
 
 end

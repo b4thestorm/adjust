@@ -14,6 +14,7 @@
 	<tr> 
 		<td><%=shift.shift_day.strftime("%m/%d")%></td>
         <td><%=shift.position%></td> 
+        <td><%=link_to 'Remove', employee_shift_path(current_employee, shift.id) , method: :delete, data: { confirm: "Are you sure?" } %></td>
 	</tr>
 		<%end%>
 </table>

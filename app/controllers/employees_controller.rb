@@ -20,6 +20,7 @@ class EmployeesController < ApplicationController
 	end
 
 	def show
+		
 		@employee = current_employee
 		@shift = @employee.shifts.all
 	end
