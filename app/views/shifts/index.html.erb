@@ -7,14 +7,14 @@
 
 <%if logged_in?%>
 <table class="table">
-	<tr>
+<!-- 	<tr>
 		<th>Name</th>
 		<th>Date<th>
 		<th>Start</th>
 		<th>End</th>
 		<th>Position</th>
 		<th>Contact<th>
-	</tr>
+	</tr> -->
 		<% @shifts.each do |shift| %> 
 	<tr>
 		<td><%=shift.employee.full_name %></td>
