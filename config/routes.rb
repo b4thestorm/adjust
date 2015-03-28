@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
- 
+
+resources :stores, except: [:edit,:update,:index]
  resources :employees, except: [:new] do
  resources :shifts do
  member do

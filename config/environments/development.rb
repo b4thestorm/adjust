@@ -27,14 +27,14 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  address:              'smtp.gmail.com',
-  port:                 587,
-  domain:               'example.com',
-  user_name: ENV["GMAIL_USERNAME"],
-  password: ENV["GMAIL_PASSWORD"],
-  authentication:       'plain',
-  enable_starttls_auto: true  }
+  # config.action_mailer.smtp_settings = {
+  # address:              'smtp.gmail.com',
+  # port:                 587,
+  # domain:               'example.com',
+  # user_name: ENV["SENDGRID_USERNAME"],
+  # password: ENV["SENDGRID_PASSWORD"],
+  # authentication:       'plain',
+  # enable_starttls_auto: true  }
 
 
   # Adds additional error checking when serving assets at runtime.
