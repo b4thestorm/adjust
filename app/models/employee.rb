@@ -1,5 +1,4 @@
 class Employee < ActiveRecord::Base
-	belongs_to :store
 	has_many :shifts
 	has_many :notifies
     has_secure_password validations: false
