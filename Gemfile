@@ -31,7 +31,7 @@ gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 gem 'better_errors'
 gem 'binding_of_caller'
-gem 'pry'
+#gem 'pry'
 gem 'validates_email_format_of'
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -42,3 +42,5 @@ gem 'validates_email_format_of'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'houser'
+gem 'byebug', group: :development

@@ -14,6 +14,23 @@ class AccountsController < ApplicationController
 	private
 	
 	def account_params
-		params.require(:account).permit(:name)
+		params.require(:account).permit(:name,owner_attributes: [:email, :password, :f_name, :l_name, :username ])
 	end
+
+# 	Shifts.where(user_id: current_user.id)
+
+# 	user has contact has phophes
+
+
+# 	current_user.contact.phones
+
+# 	SELECT Phones inner join ... contact inner joins users where user_id = 2
+
+# <company name>.my_app.com
+
+
+# my_app.cpm/<company
+#  name>/
+
+# 	current_user.account
 end

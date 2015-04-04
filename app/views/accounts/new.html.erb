@@ -1,11 +1,23 @@
-<h2>Sign Up</h2>
+<h2>Account Sign Up</h2>
+
 <%= form_for(@account) do |account|%>
 	<p>
 		<%= account.label :name %>
 		<br>
 		<%= account.text_field :name %>
 	</p>
-	<%= account.field_for :owner do |owner|%>
+	<%= account.fields_for :owner do |owner|%>
+	<p> <%=owner.label :username %>
+		<%=owner.email_field :username %>
+	</p>
+	<p>
+		<%=owner.label 'first name' %>
+		<%=owner.text_field :f_name %>
+	</p>
+	<p> 
+		<%=owner.label 'last name' %>
+		<%=owner.email_field :l_name %>
+	</p>
 	<p> <%=owner.label :email %>
 		<%=owner.email_field :email %>
 	</p>
