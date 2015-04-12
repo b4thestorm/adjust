@@ -1,5 +1,5 @@
 class ShiftsController < ApplicationController
-
+around_filter :scope_current_account 
 def index
 	
 	@shifts = Shift.all
@@ -31,7 +31,7 @@ def destroy
 	@employee = current_employee
 	@shift = @employee.shifts.find(params[:id])
 	@shift.destroy
-	redirect_to root_path
+	redirect_to employee_shifts_path
 end
 
 def notify

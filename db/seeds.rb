@@ -6,3 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Account.create([
+  {subdomain: 'test1', name: 'Test1'},
+  {subdomain: 'test2', name: 'test2'}
+])

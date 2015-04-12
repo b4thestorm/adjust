@@ -1,2 +1,3 @@
-hello world
-<%= link_to 'Sign Up' ,new_employee_path %>
+<% @employees.each do |employee|%>
+  <%= employee.f_name %>
+<% end %>

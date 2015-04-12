@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403141747) do
+ActiveRecord::Schema.define(version: 20150411071325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150403141747) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
+    t.string   "subdomain"
   end
 
   create_table "employees", force: true do |t|
@@ -31,7 +32,7 @@ ActiveRecord::Schema.define(version: 20150403141747) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "username"
-    t.integer  "store_id"
+    t.integer  "account_id"
   end
 
   create_table "notifies", force: true do |t|
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 20150403141747) do
     t.string   "notifyable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
   create_table "shifts", force: true do |t|
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150403141747) do
     t.integer  "employee_id"
     t.string   "position"
     t.datetime "shift_day"
+    t.integer  "account_id"
   end
 
 end

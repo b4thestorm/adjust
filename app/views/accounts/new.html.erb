@@ -6,9 +6,13 @@
 		<br>
 		<%= account.text_field :name %>
 	</p>
+	<p>
+		<%= account.label 'Company Name'%>
+		<%= account.text_field :subdomain %>
+	</p>
 	<%= account.fields_for :owner do |owner|%>
 	<p> <%=owner.label :username %>
-		<%=owner.email_field :username %>
+		<%=owner.text_field :username %>
 	</p>
 	<p>
 		<%=owner.label 'first name' %>
@@ -16,7 +20,7 @@
 	</p>
 	<p> 
 		<%=owner.label 'last name' %>
-		<%=owner.email_field :l_name %>
+		<%=owner.text_field :l_name %>
 	</p>
 	<p> <%=owner.label :email %>
 		<%=owner.email_field :email %>
@@ -25,5 +29,5 @@
 		<%=owner.password_field :password %>
 	</p>
 	<%end%>
-		<%= account.submit %>
+		<%= account.submit  %>
 <%end%>
