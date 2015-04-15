@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
 	before_action :require_employee, only: [:show]
-	around_filter :scope_current_account, only: [:show]
+	
 
 	def index
 	
@@ -16,8 +16,8 @@ class EmployeesController < ApplicationController
 		#current_account.employees << Employee.new(employee_params)
 		if @employee.save
 			session[:employee_id] = @employee.id
-			flash[:notice] = "Successfully Registered"
-			redirect_to bulletin_url(:host => request.subdomain + '.' + request.domain + '.' + request.port_string)
+			flash[:success] = "Successfully Registered"
+			redirect_to bulletin_url
 		else
 			render :new
 		end

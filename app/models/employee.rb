@@ -9,7 +9,7 @@ class Employee < ActiveRecord::Base
   
   
   
-
+	# default_scope { where(account_id: Account.current_id )}
 
 	def full_name 
 		f_name + " " + l_name

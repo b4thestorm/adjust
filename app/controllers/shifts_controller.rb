@@ -1,5 +1,5 @@
 class ShiftsController < ApplicationController
-around_filter :scope_current_account 
+
 def index
 	
 	@shifts = Shift.all
@@ -19,10 +19,10 @@ end
 def create
 @shift = current_employee.shifts.new(shift_params)
 if @shift.save
-	flash[:notice] = "New shift was added"
+	flash[:success] = "New shift was added"
 	redirect_to employee_shifts_path
 else
-	flash[:notice] = "Shift was not added"
+	flash[:danger] = "Shift was not added"
 	render 'new'
 end
 end
@@ -40,7 +40,7 @@ def notify
 	if Notify.create(notifyable: @shift , employee: current_employee, notify: params[:notify])
 		ShiftMailer.shift_notify(@shift,@employee).deliver
 	end
-	flash[:notice] = "Coworker has been notified"
+	flash[:success] = "Coworker has been notified"
 	redirect_to :back
 
 end

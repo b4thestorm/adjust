@@ -11,8 +11,9 @@ class AccountsController < ApplicationController
 		employee = Employee.last
 		employee.update_attribute(:account_id, @account.id)
 		flash[:success] = 'Your account has been successfully created.'
-		redirect_to login_url(:host => @account.subdomain + '.' + request.domain + request.port_string)
 		end
+		redirect_to login_url
+		
 	end
 
 	private
