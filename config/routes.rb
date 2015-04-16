@@ -1,11 +1,11 @@
-# class SubdomainPresent
-#   def self.matches?(request)
-#     request.subdomain.present? && request.subdomain != 'www'
-#   end
-# end
+class SubdomainPresent
+   def self.matches?(request)
+     request.subdomain.present? && request.subdomain != 'www'
+   end
+ end
 
 Rails.application.routes.draw do
- # constraints(SubdomainPresent) do 
+ constraints(SubdomainPresent) do 
  resources :employees, except: [:new] do
  resources :shifts do
  member do
@@ -18,13 +18,14 @@ get '/login', to: 'sessions#new'
 post '/login', to: 'sessions#create'
 get '/logout', to: 'sessions#destroy'
 get 'bulletin', to: 'shifts#index', as: :bulletin
-# end
+end
 
+root to: 'accounts#new', as: :sign_up
+post '/accounts', to: 'accounts#create', as: :accounts
 
 
 
 # get '/dashboard', to: 'dashboard#index'
-root to: 'accounts#new', as: :sign_up
-post '/accounts', to: 'accounts#create', as: :accounts
+
 
 end

@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+	skip_after_filter :scope_current_account
 
 	def new
 		@account = Account.new
@@ -12,7 +13,7 @@ class AccountsController < ApplicationController
 		employee.update_attribute(:account_id, @account.id)
 		flash[:success] = 'Your account has been successfully created.'
 		end
-		redirect_to login_url
+		redirect_to login_url(:host => @account.subdomain + '.' + request.domain + request.port_string)
 		
 	end
 
