@@ -5,7 +5,7 @@ class SubdomainPresent
  end
 
 Rails.application.routes.draw do
- constraints(SubdomainPresent) do 
+ 
  resources :employees, except: [:new] do
  resources :shifts do
  member do
@@ -18,7 +18,7 @@ get '/login', to: 'sessions#new'
 post '/login', to: 'sessions#create'
 get '/logout', to: 'sessions#destroy'
 get 'bulletin', to: 'shifts#index', as: :bulletin
-end
+
 
 root to: 'accounts#new', as: :sign_up
 post '/accounts', to: 'accounts#create', as: :accounts

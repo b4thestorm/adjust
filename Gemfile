@@ -34,6 +34,7 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'pry'
 gem 'validates_email_format_of'
+gem 'byebug'
 # Use unicorn as the app server
 # gem 'unicorn'
 

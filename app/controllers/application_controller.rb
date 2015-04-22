@@ -23,14 +23,23 @@
 
     def current_account
      Account.find_by_subdomain! request.subdomain  
+    
     end
     helper_method :current_account
 
     def scope_current_account
-     Account.current_id = current_account.subdomain
-     yield 
-   ensure
-     Account.current_id = nil
+      if request.subdomain.empty? || request.subdomain.downcase == 'www'
+        Account.current_id = nil
+        yield
+      else
+        begin
+          Account.current_id = current_account.subdomain
+          yield
+        rescue
+          Account.current_id = nil
+          redirect_to 'http://lvh.me:3000'
+        end
+      end
     end
  
 
