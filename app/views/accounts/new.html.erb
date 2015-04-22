@@ -1,7 +1,7 @@
-<div class='col-md-12'>
-<h2>Account Sign Up</h2>
-</div>
-<div class='col-md-6'>
+
+<div class='container'>
+<h2 class='pull-right' id='title'>Account Sign Up</h2>
+<div class='pull-right'>
 <%= form_for(@account) do |account|%>
 	<p>
 		<%= account.label :name %>
@@ -33,4 +33,5 @@
 	<%end%>
 		<%= account.submit  %>
 <%end%>
+</div>
 </div>

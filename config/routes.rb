@@ -25,7 +25,7 @@ post '/accounts', to: 'accounts#create', as: :accounts
 
 
 
-# get '/dashboard', to: 'dashboard#index'
+get '/dashboard', to: 'dashboard#index'
 
 
 end
