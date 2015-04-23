@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-	skip_after_filter :scope_current_account
+	#skip_after_filter :scope_current_account
 
 	def new
 		@account = Account.new

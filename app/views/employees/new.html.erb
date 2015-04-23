@@ -1,6 +1,8 @@
+<div class='container'>
 <h1>Register</h1>
 </hr>
 
+<form class='form-horizontal col-md-6'>
 <%=form_for @employee do |f| %>
 <%if @employee.errors.any?%>
 <div>
@@ -13,20 +15,29 @@
 	</ul>
 	<%end%>
 </div>
+<div class='well well-sm col-md-6' >
+<div class='form-group'>
 <%=f.label :username %>
 <%=f.text_field :username %>
-</br>
+</div>
+<div class='form-group'>
 <%=f.label :FirstName%>
 <%=f.text_field :f_name%>
-</br>
+</div>
+<div class='form-group'>
 <%=f.label :Lastname%>
 <%=f.text_field :l_name%>
-</br>
+</div>
+<div class='form-group'>
 <%=f.label :email%>
 <%=f.text_field :email%>
-</br>
+</div>
+<div class='form-group'>
 <%=f.label :password%>
 <%=f.password_field :password%>
-</br>
+</div>
 <%=f.submit ('Register')%>
 <%end%>
+</div>
+</form>
+</div>

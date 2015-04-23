@@ -17,6 +17,7 @@
             <li><%= link_to 'Logout', logout_path%></li>
             <li>Hello, <%= link_to current_employee.f_name, employee_path(current_employee)%></li>
             <%else%>
+            <li><%=link_to 'Home', dashboard_path%></li>
             <li><%=link_to 'New Account', sign_up_path%></li>
             <li><%=link_to 'Register', register_path%></li>
              <li><%=link_to 'Login', login_path%></li>

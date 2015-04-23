@@ -1,37 +1,56 @@
 
 <div class='container'>
-<h2 class='pull-right' id='title'>Account Sign Up</h2>
-<div class='pull-right'>
+<div class='row'>
+<h2 class='col-md-6' > Sign up for a free-trial and witness the power of 
+			having a well connected staff!  </h2>
+<form class='form-horizontal well well-sm col-md-6'>
 <%= form_for(@account) do |account|%>
-	<p>
+	<div class='form-group'>
+	<p class='col-xs-4'>
 		<%= account.label :name %>
-		<br>
 		<%= account.text_field :name %>
 	</p>
-	<p>
+</div>
+<div class='form-group'>
+	<p class='col-xs-4'>
 		<%= account.label 'Company Name'%>
 		<%= account.text_field :subdomain %>
 	</p>
+</div>
+<div class='form-group'>
 	<%= account.fields_for :owner do |owner|%>
-	<p> <%=owner.label :username %>
+	<p class='col-xs-4'> 
+		<%=owner.label :username %>
 		<%=owner.text_field :username %>
 	</p>
-	<p>
+</div>
+<div class='form-group'>
+	<p class='col-xs-4'>
 		<%=owner.label 'first name' %>
 		<%=owner.text_field :f_name %>
 	</p>
-	<p> 
+</div>
+<div class='form-group'>
+	<p class='col-xs-4'> 
 		<%=owner.label 'last name' %>
 		<%=owner.text_field :l_name %>
 	</p>
-	<p> <%=owner.label :email %>
+</div>
+<div class='form-group'>
+	<p class='col-xs-4'> 
+		<%=owner.label :email %>
 		<%=owner.email_field :email %>
 	</p>
-	<p> <%=owner.label :password %>
+</div>
+<div class='form-group'>
+	<p class='col-xs-4'> 
+		<%=owner.label :password %>
 		<%=owner.password_field :password %>
 	</p>
+</div>
 	<%end%>
-		<%= account.submit  %>
+		<%= account.submit %>
 <%end%>
+</form>
 </div>
 </div>
