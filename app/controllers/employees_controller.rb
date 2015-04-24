@@ -8,6 +8,7 @@ class EmployeesController < ApplicationController
 
 	def new
 		@employee = Employee.new
+		@invite = Invite.new
 	end
 
 	def create
@@ -35,6 +36,9 @@ class EmployeesController < ApplicationController
 	end
 	
 	def destroy
+		@employee = Employee.find(params[:id])
+		@employee.destroy
+		redirect_to root_path
 	end
 
 	private

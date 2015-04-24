@@ -19,7 +19,7 @@ post '/login', to: 'sessions#create'
 get '/logout', to: 'sessions#destroy'
 get 'bulletin', to: 'shifts#index', as: :bulletin
 
-
+post 'invite', to: 'invites#create' 
 root to: 'accounts#new', as: :sign_up
 post '/accounts', to: 'accounts#create', as: :accounts
 

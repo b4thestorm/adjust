@@ -2,6 +2,23 @@
 <h1>Register</h1>
 </hr>
 
+<!-- Invite Form  -->
+<form class="form-inline">
+<%=form_for(@invite, url: invite_path) do |f|%>
+<div class='form-group'>
+  <%=f.label 'First Name'%>
+  <%=f.text_field :name%>
+</div>
+<div class='form-group'>
+  <%=f.label 'E-Mail'%>
+  <%=f.text_field :email%>
+</div>
+<%=f.submit 'Request Invite', class: 'btn btn-primary'%>
+<%end%>
+</form>
+<hr>
+<!-- Register Form  -->
+</br>
 <form class='form-horizontal col-md-6'>
 <%=form_for @employee do |f| %>
 <%if @employee.errors.any?%>
