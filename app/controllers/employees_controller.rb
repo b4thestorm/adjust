@@ -8,7 +8,6 @@ class EmployeesController < ApplicationController
 
 	def new
 		@employee = Employee.new
-		@invite = Invite.new
 	end
 
 	def create
