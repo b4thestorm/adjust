@@ -6,10 +6,16 @@ class Employee < ActiveRecord::Base
 	validates :username, presence: true, uniqueness: true
 	validates :password, presence: true, on: :create
 	validates :email, :email_format => {message: 'needs valid email format'}
-  
-  
+  validate :authcode_matches
+
+   def authcode_matches
+   	unless self.authcode == 'c3p2ze'
+   		errors.add(:authcode, "Incorrect authorization code")
+   	end
+   end 
   
 	# default_scope { where(account_id: Account.current_id )}
+	 
 
 	def full_name 
 		f_name + " " + l_name

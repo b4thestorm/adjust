@@ -12,14 +12,14 @@ class EmployeesController < ApplicationController
 	end
 
 	def create
-		@employee = Employee.new(employee_params, account_id: current_account.id)
-
+		@employee = Employee.new(employee_params)
 		#current_account.employees << Employee.new(employee_params)
 		if @employee.save
 			session[:employee_id] = @employee.id
 			flash[:success] = "Successfully Registered"
-			redirect_to bulletin_url
+			redirect_to bulletin_path
 		else
+			flash[:danger] = "Something wrong with your input"
 			render :new
 		end
 	end
@@ -44,6 +44,6 @@ class EmployeesController < ApplicationController
 	private
 
 	def employee_params
-		params.require(:employee).permit(:username, :f_name, :l_name, :email, :password)
+		params.require(:employee).permit(:username, :f_name, :l_name, :email, :authcode, :password)
 	end
 end

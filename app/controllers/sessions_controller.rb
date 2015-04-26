@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 def new
 
 end
+
 def create
 	employee = Employee.find_by(username: params[:username])
 	if employee && employee.authenticate(params[:password])

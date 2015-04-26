@@ -2,36 +2,21 @@
 <h1>Register</h1>
 </hr>
 
-<!-- Invite Form  -->
-<form class="form-inline">
-<%=form_for(@invite, url: invite_path) do |f|%>
-<div class='form-group'>
-  <%=f.label 'First Name'%>
-  <%=f.text_field :name%>
-</div>
-<div class='form-group'>
-  <%=f.label 'E-Mail'%>
-  <%=f.text_field :email%>
-</div>
-<%=f.submit 'Request Invite', class: 'btn btn-primary'%>
-<%end%>
-</form>
-<hr>
+
 <!-- Register Form  -->
-</br>
-<form class='form-horizontal col-md-6'>
-<%=form_for @employee do |f| %>
-<%if @employee.errors.any?%>
+</br> 
+<% if @employee.errors.any?%>
 <div>
-	<h3><%=pluralize(@employee.errors.count,' errors')%> 
-	Prohibited the Form from being sent:</h3>
-	<ul>
-		<%@employee.errors.full_messages.each do |message|%>
-		<li><%= message%></li>
-		<%end%>
-	</ul>
-	<%end%>
+<h3><%=pluralize(@employee.errors.count,' errors')%> 
+Prohibited the Form from being sent:</h3>
+<ul>
+<% @employee.errors.full_messages.each do |message|%>
+<li><%= message%></li>
+<% end %>
+</ul>
+<% end%>
 </div>
+<%=form_for(@employee, url: employees_path) do |f| %>
 <div class='well well-sm col-md-6' >
 <div class='form-group'>
 <%=f.label :username %>
@@ -53,8 +38,11 @@
 <%=f.label :password%>
 <%=f.password_field :password%>
 </div>
-<%=f.submit ('Register')%>
-<%end%>
+<div class='form-group'>
+<%=f.label 'Authorize Code'%>
+<%=f.text_field :authcode%>
 </div>
-</form>
+<%=f.submit ('Register')%>
+<% end %>
+</div>
 </div>

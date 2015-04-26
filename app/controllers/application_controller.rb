@@ -3,7 +3,7 @@
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_employee, :logged_in?, :require_employee
-  # around_filter :scope_current_account 
+  
     
 
    def current_employee
