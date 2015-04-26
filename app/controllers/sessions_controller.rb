@@ -20,6 +20,6 @@ end
 def destroy
 	session[:employee_id] = nil 
 	flash[:danger] = "You've Logged Out"
-	redirect_to sign_up_url
+	redirect_to dashboard_path
 end
 end
