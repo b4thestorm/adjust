@@ -26,7 +26,7 @@ gem 'awesome_print', group: :development
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring', '~> 1.3.3',       group: :development
 gem 'puma'
-
+gem 'rails_12factor'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -34,7 +34,7 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'pry'
 gem 'validates_email_format_of'
-gem 'byebug'
+# gem 'byebug'
 # Use unicorn as the app server
 # gem 'unicorn'
 
