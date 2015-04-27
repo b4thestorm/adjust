@@ -13,13 +13,13 @@ Rails.application.routes.draw do
  end
 end
 end
-get '/register', to: 'employees#new'
+root to: 'employees#new', as: :register
 get '/login', to: 'sessions#new'
 post '/login', to: 'sessions#create'
 get '/logout', to: 'sessions#destroy'
 get 'bulletin', to: 'shifts#index', as: :bulletin
  
-root to: 'accounts#new', as: :sign_up
+get '/acccounts', to: 'accounts#new', as: :sign_up
 post '/accounts', to: 'accounts#create', as: :accounts
 
 
