@@ -21,6 +21,7 @@ class Employee < ActiveRecord::Base
 		f_name + " " + l_name
 	end
 
+ 
 
 
 	# def self.scoped_to(account)

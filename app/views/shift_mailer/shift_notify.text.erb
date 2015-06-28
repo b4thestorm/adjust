@@ -1,9 +1,12 @@
 
-Hello <%= @shift%>,
+Hello <%= @shift_name%>,
 
-<%=@employee%> is interested in taking your shift for <%=@time%>.
-You should send him/her an email at: 
-<%=@emailemployee%>
+<%=@employee_name %> is interested in taking your shift for <%=@shift_time%>.
+Would you like to accept this switch?
+<%=link_to 'Accept', accept_employee_shift_url(@employee, @shift.id, params[:true], host) %>
+Reject this switch?
+<%=link_to 'Reject', accept_employee_shift_url(@employee, @shift.id, params[:false], host )%>
+
 
 
 best regards,

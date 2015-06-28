@@ -3,7 +3,7 @@ class EmployeesController < ApplicationController
 	
 
 	def index
-	
+		@employees = Employee.all
 	end
 
 	def new
@@ -18,7 +18,7 @@ class EmployeesController < ApplicationController
 			flash[:success] = "Successfully Registered"
 			redirect_to bulletin_path
 		else
-			flash[:danger] = "Something wrong with your input"
+			flash[:danger] = "There is something wrong with your input"
 			render :new
 		end
 	end

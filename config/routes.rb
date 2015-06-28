@@ -10,6 +10,7 @@ Rails.application.routes.draw do
  resources :shifts do
  member do
  	post 'notify'
+  post 'accept'
  end
 end
 end

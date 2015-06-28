@@ -10,12 +10,21 @@ class ShiftMailer < ActionMailer::Base
   #   en.shift_mailer.shift_notify.subject
   #
   def shift_notify(shift, employee)
-    @shift = shift.employee.full_name
-    @time = shift.shift_day.strftime("%m/%d")
-    @employee = employee.full_name
-    @emailemployee = employee.email
+    @shift_name = shift.employee.full_name
+    @employee_name = employee.full_name
+    @shift_time = shift.shift_day.strftime("%a-%d-%b")
+    @employee = employee.id
     @email = shift.employee.email
 
     mail(to: @email, subject:'Interested in your Shift')
   end
+
+  def shift_accept(shift, )
+    mail(to: @employee, subject: 'Your request was accepted')
+  end
+
+  def shift_reject
+    mail(to: @employee, subject: 'Your request was rejected')
+  end
+
 end

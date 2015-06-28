@@ -13,9 +13,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
-
+gem 'will_paginate'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -27,6 +28,7 @@ gem 'awesome_print', group: :development
 gem 'spring', '~> 1.3.3',       group: :development
 gem 'puma'
 gem 'rails_12factor'
+gem 'simple_form'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -34,6 +36,7 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'pry'
 gem 'validates_email_format_of'
+gem 'jquery-datatables-rails', '~> 3.3.0'
 # gem 'byebug'
 # Use unicorn as the app server
 # gem 'unicorn'
