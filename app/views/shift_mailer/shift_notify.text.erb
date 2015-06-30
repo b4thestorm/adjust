@@ -2,11 +2,7 @@
 Hello <%= @shift_name%>,
 
 <%=@employee_name %> is interested in taking your shift for <%=@shift_time%>.
-Would you like to accept this switch?
-<%=link_to 'Accept', accept_employee_shift_url(@employee, @shift.id, params[:true], host) %>
-Reject this switch?
-<%=link_to 'Reject', accept_employee_shift_url(@employee, @shift.id, params[:false], host )%>
-
+And is currently waiting for your dept. manager approval.
 
 
 best regards,

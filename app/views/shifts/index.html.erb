@@ -46,7 +46,7 @@
  			 		<%= shift.employee.full_name%>
   				<%= shift.shift_day.strftime "%Y/%m/%d"%>
   				<%=link_to "shift(n)", employee_shift_path(shift.employee_id , shift.id)%>
-  				<%=button_to 'Notify', notify_employee_shift_path(shift.employee_id, shift.id)%>
+  				<%=button_to 'Request', notify_employee_shift_path(shift.employee_id, shift.id)%>
 				</div>
 		<%end%> 
 				

@@ -23,8 +23,4 @@ class ShiftMailer < ActionMailer::Base
     mail(to: @employee, subject: 'Your request was accepted')
   end
 
-  def shift_reject
-    mail(to: @employee, subject: 'Your request was rejected')
-  end
-
 end

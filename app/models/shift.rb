@@ -1,6 +1,10 @@
 class Shift < ActiveRecord::Base
 	belongs_to :employee
 	has_many :notifies, as: :notifyable
+  has_many :employee_shifts
+  has_many :coworkers, through: :employee_shifts, class_name: 'Employee', foreign_key: 'coworker_id'
+
+
   require 'date'
   # default_scope { where(account_id: Account.current_id )}
 
@@ -35,6 +39,8 @@ end
       count += 1
     end
   end
+
+  
 
 # def self.get_days(wkn, desired_days)
 #   week = Shift.weeks(wkn)

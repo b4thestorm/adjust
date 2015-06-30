@@ -2,7 +2,11 @@ class Employee < ActiveRecord::Base
 	belongs_to :account
 	has_many :shifts
 	has_many :notifies
-    has_secure_password validations: false
+  has_many :employee_shifts
+  has_many :shifts, through: :employee_shifts
+
+
+  has_secure_password validations: false
 	validates :username, presence: true, uniqueness: true
 	validates :password, presence: true, on: :create
 	validates :email, :email_format => {message: 'needs valid email format'}
