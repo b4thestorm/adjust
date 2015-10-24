@@ -1,5 +1,6 @@
 class Employee < ActiveRecord::Base
 	belongs_to :account
+  belongs_to :department
 	has_many :shifts
 	has_many :notifies
   has_many :employee_shifts
@@ -21,9 +22,9 @@ class Employee < ActiveRecord::Base
 	# default_scope { where(account_id: Account.current_id )}
 	 
 
-	def full_name 
-		f_name + " " + l_name
-	end
+	 def full_name 
+	 	f_name + " " + l_name
+	 end
 
  
 

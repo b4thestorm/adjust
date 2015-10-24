@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150629195121) do
+ActiveRecord::Schema.define(version: 20150630210434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,13 +24,19 @@ ActiveRecord::Schema.define(version: 20150629195121) do
     t.string   "subdomain"
   end
 
+  create_table "departments", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "employee_shifts", force: true do |t|
     t.integer  "shift_id"
     t.integer  "employee_id"
     t.integer  "coworker_id"
-    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status",      default: "pending"
   end
 
   create_table "employees", force: true do |t|
@@ -43,7 +49,10 @@ ActiveRecord::Schema.define(version: 20150629195121) do
     t.string   "username"
     t.integer  "account_id"
     t.string   "authcode"
+    t.integer  "department_id"
   end
+
+  add_index "employees", ["department_id"], name: "index_employees_on_department_id", using: :btree
 
   create_table "invites", force: true do |t|
     t.string   "name"

@@ -37,6 +37,7 @@ gem 'binding_of_caller'
 gem 'pry'
 gem 'validates_email_format_of'
 gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'rspec-rails'
 # gem 'byebug'
 # Use unicorn as the app server
 # gem 'unicorn'

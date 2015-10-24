@@ -14,15 +14,20 @@
 <%if logged_in?%>
 
 
-<h3>Weeks</h3> of <%=Date.today.strftime("%b %Y")%>
+<h3>Weeks</h3> of <%= Date.today.strftime("%b %Y")%>
+<%binding.pry%>
+<%=select_tag( "day", options_for_select(@container)%>
 <!-- Pressing the week shouldnt reset the days-->
  
 <ul class="number_weeks">
-  <li class='btn btn-default week1'><%= @week_ran %></li>
+  <li class='btn btn-default week1'><%=link_to 'Current Week', employee_shifts_path(session[:employee_id], :week => '1')%></li>
+  <li class='btn btn-default week2'><%=link_to 'Week 2', employee_shifts_path(session[:employee_id], :week => '2')%></li>
+  <li class='btn btn-default week3'><%=link_to 'Week 3', employee_shifts_path(session[:employee_id], :week => '3')%></li>
+  <li class='btn btn-default week4'><%=link_to 'Week 4', employee_shifts_path(session[:employee_id], :week =>'4')%></li>
 </ul>
 
  
-
+ 
 <ul class='days'>
   <li class='btn btn-default'> Monday </li>
   <li class='btn btn-default'> Tuesday </li>
@@ -93,8 +98,8 @@
         
 
 
- <%end%>
+
 
 </body>
-
+<%end%>
 

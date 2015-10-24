@@ -1,14 +1,19 @@
 class ShiftsController < ApplicationController
+	include ShiftsHelper
 
 def index
 	# paginate(:page => params[:page], :per_page => 5)
 	@shifts = Shift.all
 	@shift = session[:employee_id]
-	@week_ranges = Shift.weeks_ranges
-	
-		today = Date.today 
-		@days_from_this_week = (today.at_beginning_of_week..today.at_end_of_week).map
-		@week = @days_from_this_week.to_a
+	@new_instance = Shift.new
+	if params[:week]
+	container = @new_instance.weeks(params[:week])
+	binding.pry
+	@container = index_for_options(container)
+	end
+		# today = Date.today 
+		# @days_from_this_week = (today.at_beginning_of_week..today.at_end_of_week).map
+		# @week = @days_from_this_week.to_a
 end
 
 def show
