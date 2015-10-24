@@ -1,5 +1,5 @@
 class Shift < ActiveRecord::Base
-  
+
 	belongs_to :employee
 	has_many :notifies, as: :notifyable
   has_many :employee_shifts
@@ -29,7 +29,7 @@ def weeks(wkn)
   end 
 end
 
-# method to reformat the date time
+# reformat the date time
 def clean_week(list)
   list.map!{|x| x.to_s}
 end

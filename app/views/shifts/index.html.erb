@@ -5,43 +5,23 @@
 </style>
 
 <h1>Bulletin</h1> 
-<%if logged_in?%>
-<p>All available shifts<p> 
-<%end%>
 <hr/>
 <body>
-
 <%if logged_in?%>
 
+<p>All available shifts</p> 
 
-<h3>Weeks</h3> of <%= Date.today.strftime("%b %Y")%>
-<%binding.pry%>
-<%=select_tag( "day", options_for_select(@container)%>
-<!-- Pressing the week shouldnt reset the days-->
- 
-<ul class="number_weeks">
-  <li class='btn btn-default week1'><%=link_to 'Current Week', employee_shifts_path(session[:employee_id], :week => '1')%></li>
-  <li class='btn btn-default week2'><%=link_to 'Week 2', employee_shifts_path(session[:employee_id], :week => '2')%></li>
-  <li class='btn btn-default week3'><%=link_to 'Week 3', employee_shifts_path(session[:employee_id], :week => '3')%></li>
-  <li class='btn btn-default week4'><%=link_to 'Week 4', employee_shifts_path(session[:employee_id], :week =>'4')%></li>
-</ul>
-
- 
- 
+<h3>Week</h3> of <%= Date.today.strftime("%b %Y")%>
 <ul class='days'>
-  <li class='btn btn-default'> Monday </li>
-  <li class='btn btn-default'> Tuesday </li>
-  <li class='btn btn-default'> Wednesday </li>
-  <li class='btn btn-default'> Thursday </li>
-  <li class='btn btn-default'> Friday </li>
-  <li class='btn btn-default'> Saturday </li>
-  <li class='btn btn-default'> Sunday </li>
+  <li class='btn btn-default'> Current Week </li>
+  <li class='btn btn-default'> Next Week </li>
+  <li class='btn btn-default'> Week 3 </li>
+  <li class='btn btn-default'> Week 4 </li>
 </ul>
-
-
-<%=button_to 'search'%>
-
-
+<%=form_tag('/bulletin', method: :get) do %>
+<%=select_tag( "day", options_for_select(@container))%>
+<%end%>
+<!-- Pressing the week shouldnt reset the days-->
 
 <div id="wrapper">
 	<div id="columns">
@@ -53,53 +33,12 @@
   				<%=link_to "shift(n)", employee_shift_path(shift.employee_id , shift.id)%>
   				<%=button_to 'Request', notify_employee_shift_path(shift.employee_id, shift.id)%>
 				</div>
-		<%end%> 
-				
+		<%end%> 		
   </div>
 </div>
 			
-<script>
-  
-      $(document).ready(function(){
-          $('.days > li').on('click', function(){
-          //set the state
-          $('.pin').fadeOut();
-
-          });
-      });
-      
-      //I need to track state because I may need to do multiple ajax calls 
-      //So basically I want JS to only give me all the buttons that are active
-      function change_week(selector){
-        $(selector).on('click', function(){
-          $ajax{
-            type: 'get'
-            data: week_range
-            success: 
-          }
-        });
-      } 
-
-      function get_days(selector*){
-          $(selector).on('click', function(){
- 
-            $.ajax(window.location.href, {
-              type: 'get',
-              data: {'dow': $('.pin').data('day')}
-            });
-          });
-
-        });
-    
-  
-
-</script>
-
-        
-
-
-
+<%end%>
 
 </body>
-<%end%>
+
 
