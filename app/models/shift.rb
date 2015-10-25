@@ -6,6 +6,7 @@ class Shift < ActiveRecord::Base
   has_many :coworkers, through: :employee_shifts, class_name: 'Employee', foreign_key: 'coworker_id'
 
   require 'date'
+  
   # default_scope { where(account_id: Account.current_id )}
 
 def weeks(wkn)

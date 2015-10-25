@@ -12,15 +12,24 @@
 <p>All available shifts</p> 
 
 <h3>Week</h3> of <%= Date.today.strftime("%b %Y")%>
-<ul class='days'>
+<!-- <ul class='days'>
   <li class='btn btn-default'> Current Week </li>
   <li class='btn btn-default'> Next Week </li>
   <li class='btn btn-default'> Week 3 </li>
   <li class='btn btn-default'> Week 4 </li>
-</ul>
+</ul> -->
+<%=link_to 'Current Week', bulletin_path(:week => 1), method: :get%>
+<%=link_to 'Next Week', bulletin_path(:week => 2), method: :get%>
+<%=link_to 'Week 3', bulletin_path(:week => 3), method: :get%>
+<%=link_to 'Week 4', bulletin_path(:week => 4), method: :get%>
+
 <%=form_tag('/bulletin', method: :get) do %>
+<% if @container %>
 <%=select_tag( "day", options_for_select(@container))%>
+<%=submit_tag "search", class: "btn btn-success"%>
+<% end %>
 <%end%>
+
 <!-- Pressing the week shouldnt reset the days-->
 
 <div id="wrapper">

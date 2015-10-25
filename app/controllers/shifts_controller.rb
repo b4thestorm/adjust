@@ -8,12 +8,12 @@ def index
 	@new_instance = Shift.new
 	if params[:week]
 	container = @new_instance.weeks(params[:week])
-	binding.pry
-	@container = index_for_options(container)
+	@container = container
+	#index_for_options(container)
 	end
-		# today = Date.today 
-		# @days_from_this_week = (today.at_beginning_of_week..today.at_end_of_week).map
-		# @week = @days_from_this_week.to_a
+	if params['day']
+	@shifts = Shift.find_by_sql(["SELECT * FROM shifts WHERE shift_day = ?", params[:day] ])
+	end
 end
 
 def show

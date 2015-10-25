@@ -5,8 +5,8 @@ module ShiftsHelper
   list2.map!{|x| Array.new(1,x) << x} 
     count = 0
     while count < list2.length
-        list2[count][1] = count + 1
-        count += 1
+      list2[count][1] = count + 1
+      count += 1
     end
     return list2
   end 
