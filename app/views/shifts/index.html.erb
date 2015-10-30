@@ -11,17 +11,14 @@
 
 <p>All available shifts</p> 
 
-<h3>Week</h3> of <%= Date.today.strftime("%b %Y")%>
-<!-- <ul class='days'>
-  <li class='btn btn-default'> Current Week </li>
-  <li class='btn btn-default'> Next Week </li>
-  <li class='btn btn-default'> Week 3 </li>
-  <li class='btn btn-default'> Week 4 </li>
-</ul> -->
-<%=link_to 'Current Week', bulletin_path(:week => 1), method: :get%>
-<%=link_to 'Next Week', bulletin_path(:week => 2), method: :get%>
-<%=link_to 'Week 3', bulletin_path(:week => 3), method: :get%>
-<%=link_to 'Week 4', bulletin_path(:week => 4), method: :get%>
+<h3>Week of <%= Date.today.strftime("%b %Y")%></h3>
+
+<%=link_to 'Current Week', bulletin_path(:week => 1), method: :get, class: "btn btn-default" %>
+<%=link_to 'Next Week', bulletin_path(:week => 2), method: :get , class: "btn btn-default" %>
+<%=link_to 'Week 3', bulletin_path(:week => 3), method: :get, class: "btn btn-default" %>
+<%=link_to 'Week 4', bulletin_path(:week => 4), method: :get, class: "btn btn-default" %>
+</br>
+</br>
 
 <%=form_tag('/bulletin', method: :get) do %>
 <% if @container %>
@@ -38,9 +35,13 @@
 				<div class='pin' data-day='<%=shift.shift_day.strftime("%A").downcase%>'>
  			 		<%= image_tag "shift.jpg", class: "img-responsive" %>
  			 		<%= shift.employee.full_name%>
-  				<%= shift.shift_day.strftime "%Y/%m/%d"%>
-  				<%=link_to "shift(n)", employee_shift_path(shift.employee_id , shift.id)%>
+        </br>
+  				<%= shift.shift_day.strftime "%m/%d/%Y"%>
+        </br>
+          <%= "#{shift.start.strftime("%I:%M%P")} - #{shift.end.strftime(" %I:%M%P")}"%>
+          <%if shift.employee_id != current_employee.id %>
   				<%=button_to 'Request', notify_employee_shift_path(shift.employee_id, shift.id)%>
+          <%end%>
 				</div>
 		<%end%> 		
   </div>

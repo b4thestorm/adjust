@@ -19,8 +19,6 @@ class ShiftMailer < ActionMailer::Base
     mail(to: @email, subject:'Interested in your Shift')
   end
 
-  def shift_accept(shift, )
-    mail(to: @employee, subject: 'Your request was accepted')
-  end
+  
 
 end

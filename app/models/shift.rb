@@ -1,5 +1,4 @@
 class Shift < ActiveRecord::Base
-
 	belongs_to :employee
 	has_many :notifies, as: :notifyable
   has_many :employee_shifts
@@ -7,8 +6,6 @@ class Shift < ActiveRecord::Base
 
   require 'date'
   
-  # default_scope { where(account_id: Account.current_id )}
-
 def weeks(wkn)
   today = Date.today
   if wkn.to_i == 1

@@ -1,23 +1,29 @@
 <h1>Profile: <%=@employee.full_name%></h1>
 </hr>
+<%=link_to 'Back', employee_shifts_path(@employee), class: "btn btn-success"%>
+<%= link_to 'Add Shift', new_employee_shift_path(current_employee.id), class: "btn btn-primary"%>
 
-</br>
-</br>
-<%= link_to 'Add Shift', new_employee_shift_path(current_employee.id)%>
+<h2> My Shifts</h2>
 <table class="table">
 	<tr>
+	<th>Shift Id</th>
 	<th>Date</th>
 	<th>Position</th>
 	<th>Remove</th>
 	</tr>
-		<%@shift.each do |shift|%>
+		<% @shift.each do |shift|%>
 	<tr> 
+		<td><%= shift.id%></td>
 		<td><%=shift.shift_day.strftime("%m/%d")%></td>
-        <td><%=shift.position%></td> 
+        <td><%="#{shift.position}"%></td> 
         <td><%=link_to 'Remove', employee_shift_path(current_employee, shift.id) , method: :delete, data: { confirm: "Are you sure?" } %></td>
 	</tr>
 		<%end%>
 </table>
 
+ <h2>Shifts I Want</h2>
+<!-- -->
+Coming Soon 
+<ul>
 
-<%=link_to 'Back', employee_shifts_path(@employee), class: "btn btn-success"%>
+</ul>

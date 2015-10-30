@@ -4,14 +4,12 @@ class ShiftsController < ApplicationController
 def index
 	# paginate(:page => params[:page], :per_page => 5)
 	@shifts = Shift.all
-	@shift = session[:employee_id]
+	# @shift = Employee.where(id: session[:employee_id]).take
 	@new_instance = Shift.new
 	if params[:week]
-	container = @new_instance.weeks(params[:week])
-	@container = container
-	#index_for_options(container)
+	@container = @new_instance.weeks(params[:week])
 	end
-	if params['day']
+	if params[:day]
 	@shifts = Shift.find_by_sql(["SELECT * FROM shifts WHERE shift_day = ?", params[:day] ])
 	end
 end
@@ -19,17 +17,20 @@ end
 def show
 @employee = current_employee
 @shift = @employee.shifts.find(params[:id])
+@wants = @shift.coworkers
 end
 
 def new
 @employee = current_employee
-@shift = @employee.shifts.new
+@shift = Shift.new
 end
 
 def create
-@shift = current_employee.shifts.new(shift_params)
- if @shift.save
-	flash[:success] = "New shift was added"
+@shift = Shift.new(shift_params)
+ if @shift.save!
+ 	@shift.employee_id = current_employee.id
+ 	@shift.save
+ 	flash[:success] = "New shift was added"
 	redirect_to employee_shifts_path
   else
 	flash[:danger] = "Shift was not added"
@@ -48,8 +49,9 @@ def notify
 	@user = current_employee
 	@shift = Shift.find(params[:id])
 	if @shift.coworkers <<  @user
+		binding.pry
 		flash[:success] = 'Your Request has been sent'
-		ShiftMailer.shift_notify(@shift,@user).deliver
+		#ShiftMailer.shift_notify(@shift,@user).deliver
 		redirect_to :back
   end
 end
@@ -72,7 +74,7 @@ end
 
 private 
 def shift_params
-params.require(:shift).permit(:shift_day,:start,:end,:position,:employee_id)
+params.require(:shift).permit(:shift_day,:start,:end,:position)
 end
 end
 

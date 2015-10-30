@@ -14,7 +14,7 @@ class EmployeesController < ApplicationController
 		@employee = Employee.new(employee_params)
 		#current_account.employees << Employee.new(employee_params)
 		if @employee.save
-			session[:employee_id] = @employee.id
+			session[:employee_id] = @employee
 			flash[:success] = "Successfully Registered"
 			redirect_to bulletin_path
 		else
@@ -25,7 +25,8 @@ class EmployeesController < ApplicationController
 
 	def show
 		@employee = @current_employee
-		@shift = @employee.shifts.all
+		@shift = Shift.where(employee_id: @current_employee.id)
+		@copyshifts = @shift.dup
 	end
 
 	def edit
