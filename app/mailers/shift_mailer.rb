@@ -1,5 +1,5 @@
 class ShiftMailer < ActionMailer::Base
-  default from: "arnoldsander@gmail.com"
+  default from: "no-send@gmail.com"
   extend ApplicationHelper
   include ApplicationHelper
   helper ApplicationHelper

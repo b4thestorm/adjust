@@ -49,9 +49,8 @@ def notify
 	@user = current_employee
 	@shift = Shift.find(params[:id])
 	if @shift.coworkers <<  @user
-		binding.pry
 		flash[:success] = 'Your Request has been sent'
-		#ShiftMailer.shift_notify(@shift,@user).deliver
+		ShiftMailer.shift_notify(@shift, @user).deliver
 		redirect_to :back
   end
 end
@@ -62,6 +61,10 @@ def accept
 	coworker = @employee.coworkers.match
 	end
 end
+
+# once the flag is made to check for the notification type pass in the shift id and the 
+# employee id 
+
 # 	@shift = Shift.find(params[:id])
 # 	@employee = current_employee
 # 	if Notify.create(notifyable: @shift , employee: current_employee, notify: params[:notify])
@@ -69,8 +72,6 @@ end
 # 	end
 # 	flash[:success] = " Your Coworker has been notified"
 # 	redirect_to :back
-
-
 
 private 
 def shift_params
