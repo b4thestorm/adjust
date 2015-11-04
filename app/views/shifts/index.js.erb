@@ -1,10 +1,10 @@
 
 
-$('#t').on('click', function{
-  $.get('/employees/@shift.employee_id/shifts', {
+$('.current_week').on('click', function{
+  $.get('/employees/current_employee.id/shifts', {
     type: 'get', 
     success: function(response){
-      alert(null);
+      alert("Ive been clicked!");
     };
     data: {"tuesday": $('#t').data("tuesday")}
   });

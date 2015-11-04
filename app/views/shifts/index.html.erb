@@ -21,14 +21,17 @@
 </br>
 
 <%=form_tag('/bulletin', method: :get) do %>
-<% if @container %>
+<% if @container%>
 <%=select_tag( "day", options_for_select(@container))%>
 <%=submit_tag "search", class: "btn btn-success"%>
-<% end %>
+<% else %>
+<%= select_tag("day")%>
+<%= submit_tag "search", class: "btn btn-success" %>
+<%end %>
 <%end%>
 
 <!-- Pressing the week shouldnt reset the days-->
-<p class="pull-right"> Total Shifts <span class="badge"><%= Shift.all.count%></span></p>
+<p class="pull-right"> Total Shifts <span class="badge"><%= @shifts.count%></span></p>
 <div id="wrapper">
 	<div id="columns">
 		<% @shifts.each do |shift|%>

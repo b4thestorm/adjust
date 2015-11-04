@@ -3,8 +3,8 @@ class ShiftsController < ApplicationController
 
 def index
 	# paginate(:page => params[:page], :per_page => 5)
-	@shifts = Shift.all
 	# @shift = Employee.where(id: session[:employee_id]).take
+	@shifts = Shift.all
 	@new_instance = Shift.new
 	if params[:week]
 	@container = @new_instance.weeks(params[:week])
@@ -60,6 +60,8 @@ def notify
 		@shift_request.shift_num = @shift.id
 		@shift_request.save
 		redirect_to :back
+		else 
+		redirect_to :back 
 		end
   end
 end
@@ -71,16 +73,6 @@ def accept
 	end
 end
 
-# once the flag is made to check for the notification type pass in the shift id and the 
-# employee id 
-
-# 	@shift = Shift.find(params[:id])
-# 	@employee = current_employee
-# 	if Notify.create(notifyable: @shift , employee: current_employee, notify: params[:notify])
-# 		ShiftMailer.shift_notify(@shift,@employee).deliver
-# 	end
-# 	flash[:success] = " Your Coworker has been notified"
-# 	redirect_to :back
 
 private 
 def shift_params
