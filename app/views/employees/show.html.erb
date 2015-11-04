@@ -5,12 +5,24 @@
 </br>
 </br>
 
-<p> Notification Type : </p>
+<p> Notification Type: </p>
 <%=form_tag employee_message_choice_path(@employee), method: 'post' do %>
+<%if @employee.flag == 'email'%>
+<%= radio_button_tag 'flag', 'email', :checked => true %> Email
+<%else%>
 <%= radio_button_tag 'flag', 'email'%> Email
+<%end%>
+<%if @employee.flag == 'text_message'%>
+<%= radio_button_tag 'flag', 'text_message', :checked => true %> Text Message
+<%else%>
 <%= radio_button_tag 'flag', 'text_message'%> Text Message
+<%end%>
 <%= submit_tag 'Set' %>
 <%end%>
+</br>
+
+<p>Stop Notifications: <span> Yes</span> <span>No</span></p>
+
 
 <h2> My Shifts</h2>
 <table class="table">
