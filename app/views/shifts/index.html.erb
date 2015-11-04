@@ -28,7 +28,7 @@
 <%end%>
 
 <!-- Pressing the week shouldnt reset the days-->
-
+<p class="pull-right"> Total Shifts <span class="badge"><%= Shift.all.count%></span></p>
 <div id="wrapper">
 	<div id="columns">
 		<% @shifts.each do |shift|%>
@@ -40,7 +40,7 @@
         </br>
           <%= "#{shift.start.strftime("%I:%M%P")} - #{shift.end.strftime(" %I:%M%P")}"%>
           <%if shift.employee_id != current_employee.id %>
-  				<%=button_to 'Request', notify_employee_shift_path(shift.employee_id, shift.id)%>
+  				<%=button_to "Request", notify_employee_shift_path(shift.employee_id, shift.id)%>
           <%end%>
 				</div>
 		<%end%> 		

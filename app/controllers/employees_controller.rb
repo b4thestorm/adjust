@@ -33,6 +33,7 @@ class EmployeesController < ApplicationController
 	end
 
 	def update
+
 	end
 	
 	def destroy
@@ -40,6 +41,14 @@ class EmployeesController < ApplicationController
 		@employee.destroy
 		redirect_to root_path
 	end
+
+
+def message_choice
+	@employee = current_employee
+	@employee.set_flag(params[:flag])
+	redirect_to employee_path(session[:employee_id])
+end
+
 
 	private
 

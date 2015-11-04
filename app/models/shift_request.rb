@@ -1,19 +1,14 @@
 class ShiftRequest < ActiveRecord::Base
 require 'twilio-ruby'
 after_create :remind
-
-
-def initialize( user_id, shift_id)
-@user_id = user_id
-@shift_id = shift_id
-end
+attr_accessor :user_num, :shift_num
 
 def get_user
-  Employee.where(id: @user_id).take
+  Employee.where(id: @user_num).take
 end 
 
 def get_coworker
-  Shift.where(id: @shift_id).take
+  Shift.where(id: @shift_num).take
 end
 
 def remind

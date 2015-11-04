@@ -49,9 +49,18 @@ def notify
 	@user = current_employee
 	@shift = Shift.find(params[:id])
 	if @shift.coworkers <<  @user
+		if current_employee.flag == 'email'
 		flash[:success] = 'Your Request has been sent'
 		ShiftMailer.shift_notify(@shift, @user).deliver
 		redirect_to :back
+		elsif current_employee.flag == 'text_message'
+		flash[:success] = 'Your Request has been sent'
+		@shift_request = ShiftRequest.new
+		@shift_request.user_num = @user.id
+		@shift_request.shift_num = @shift.id
+		@shift_request.save
+		redirect_to :back
+		end
   end
 end
 

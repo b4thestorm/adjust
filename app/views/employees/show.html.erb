@@ -1,7 +1,16 @@
 <h1>Profile: <%=@employee.full_name%></h1>
 </hr>
-<%=link_to 'Back', employee_shifts_path(@employee), class: "btn btn-success"%>
+<%=link_to 'Bulletin', employee_shifts_path(@employee), class: "btn btn-success"%>
 <%= link_to 'Add Shift', new_employee_shift_path(current_employee.id), class: "btn btn-primary"%>
+</br>
+</br>
+
+<p> Notification Type : </p>
+<%=form_tag employee_message_choice_path(@employee), method: 'post' do %>
+<%= radio_button_tag 'flag', 'email'%> Email
+<%= radio_button_tag 'flag', 'text_message'%> Text Message
+<%= submit_tag 'Set' %>
+<%end%>
 
 <h2> My Shifts</h2>
 <table class="table">

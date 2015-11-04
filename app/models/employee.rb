@@ -18,6 +18,11 @@ class Employee < ActiveRecord::Base
    		errors.add(:authcode, "Incorrect authorization code")
    	end
    end 
+
+   def set_flag(type) 
+    self.flag = type
+    self.save
+   end 
   
 	# default_scope { where(account_id: Account.current_id )}
 	 

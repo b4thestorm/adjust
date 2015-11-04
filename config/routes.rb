@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
  
  resources :employees, except: [:new] do
+ post '/message_choice', to: 'employees#message_choice' 
  resources :shifts do
  member do
  	post 'notify'
