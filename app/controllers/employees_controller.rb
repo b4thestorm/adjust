@@ -46,6 +46,7 @@ class EmployeesController < ApplicationController
 def message_choice
 	@employee = current_employee
 	@employee.set_flag(params[:flag])
+	flash[:success] = "Your notification type has been set"
 	redirect_to employee_path(session[:employee_id])
 end
 
