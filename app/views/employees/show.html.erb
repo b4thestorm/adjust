@@ -1,6 +1,6 @@
 <h1>Profile: <%=@employee.full_name%></h1>
 </hr>
-<%=link_to 'Bulletin', employee_shifts_path(@employee), class: "btn btn-success"%>
+<%=link_to 'To Bulletin', employee_shifts_path(@employee), class: "btn btn-success"%>
 <%= link_to 'Add Shift', new_employee_shift_path(current_employee.id), class: "btn btn-primary"%>
 </br>
 </br>
@@ -21,8 +21,20 @@
 <%end%>
 </br>
 
-<p>Stop Notifications: <span> Yes</span> <span>No</span></p>
-
+<p>Stop Notifications: 
+<%= form_tag employee_stop_request_path(@employee), method:'post' do %>
+<% if @employee.alert == 'yes' %>
+<%= radio_button_tag 'choice', 'yes', :checked => true %> Yes
+<% else %>
+<%= radio_button_tag 'choice', 'yes'%> Yes
+<%end%>
+<% if @employee.alert == 'no' %>
+<%= radio_button_tag 'choice', 'no', :checked => true %> No
+<% else %>
+<%= radio_button_tag 'choice', 'no'%> No
+<%end%>
+<%= submit_tag 'Set'%>
+<%end%>
 
 <h2> My Shifts</h2>
 <table class="table">

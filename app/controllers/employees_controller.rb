@@ -50,6 +50,13 @@ def message_choice
 	redirect_to employee_path(session[:employee_id])
 end
 
+def stop_request
+	@employee = current_employee
+	@employee.set_alert(params[:choice])
+	flash[:success] = "Your notifications will stop" 
+	redirect_to employee_path(session[:employee_id])
+end
+
 
 	private
 

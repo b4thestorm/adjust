@@ -23,6 +23,11 @@ class Employee < ActiveRecord::Base
     self.flag = type
     self.save
    end 
+
+   def set_alert(type)
+    self.alert = type
+    self.save
+    end 
   
 	# default_scope { where(account_id: Account.current_id )}
 	 

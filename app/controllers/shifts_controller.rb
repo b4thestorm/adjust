@@ -1,5 +1,6 @@
 class ShiftsController < ApplicationController
 	include ShiftsHelper
+	before_action :check_if_allowed, only: [:notify]
 
 def index
 	# paginate(:page => params[:page], :per_page => 5)
@@ -78,5 +79,15 @@ private
 def shift_params
 params.require(:shift).permit(:shift_day,:start,:end,:position)
 end
+
+def check_if_allowed
+	if Employee.where(id: params[:employee_id]).take.alert == 'yes'
+		flash[:success] = "This user has stopped taking requests"
+		redirect_to :back
+	else
+		return true  
+	end 
+end
+
 end
 
