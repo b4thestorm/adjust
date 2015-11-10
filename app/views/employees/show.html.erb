@@ -1,13 +1,13 @@
 
-<h1 class="profile-name">Profile: <%=@employee.full_name%></h1>
-</hr>
-<%=link_to 'To Bulletin', employee_shifts_path(@employee), class: "btn btn-success"%>
-<%= link_to 'Add Shift', new_employee_shift_path(current_employee.id), class: "btn btn-primary"%>
+<h1 class="profile-name text-center">Profile: <%=@employee.f_name%></h1>
+<hr>
+<%=link_to 'To Bulletin', employee_shifts_path(@employee), class: "btn btn-block btn-danger"%>
 </br>
+<%= link_to 'Add Shift', new_employee_shift_path(current_employee.id), class: "btn btn-block btn-primary"%>
 </br>
 
 	<div class='notify-hover'>
-	<h3>Notification Type</h3>
+	<button class="btn btn-warning btn-block">Notification Type</button>
 	</div>
 
 	<div class="notify-container">
@@ -41,9 +41,9 @@
 		<%= submit_tag 'Set'%>
 			<%end%>
 	</div>
-
+</br>
 <div class='shift-hover'>
-<h3> My Shifts</h3>
+<button class="btn btn-success btn-block"> My Shifts</button>
 </div>
 
 <table class="table shift-container">
