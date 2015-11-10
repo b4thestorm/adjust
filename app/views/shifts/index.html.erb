@@ -4,29 +4,46 @@
     }
 </style>
 
-<h1>Bulletin</h1> 
+<h1 class="col-xs-12 text-center">Bulletin</h1> 
 <hr/>
 <body>
 <%if logged_in?%>
 
-<p>All available shifts</p> 
+<p class="text-center">All available shifts</p> 
 
-<h3>Week of <%= Date.today.strftime("%b %Y")%></h3>
+<h3 class="text-center">Week of <%= Date.today.strftime("%b %Y")%></h3>
 
-<%=link_to 'Current Week', bulletin_path(:week => 1), method: :get, class: "btn btn-default" %>
-<%=link_to 'Next Week', bulletin_path(:week => 2), method: :get , class: "btn btn-default" %>
-<%=link_to 'Week 3', bulletin_path(:week => 3), method: :get, class: "btn btn-default" %>
-<%=link_to 'Week 4', bulletin_path(:week => 4), method: :get, class: "btn btn-default" %>
+<div class="row">
+  <div class="col-xs-3">
+<%=link_to 'Current', bulletin_path(:week => 1), method: :get, class: "btn btn-primary" %>
+  </div>
+
+  <div class="col-xs-3">
+<%=link_to 'Next Week', bulletin_path(:week => 2), method: :get , class: "btn btn-primary" %>
+  </div>
+
+  <div class="col-xs-3">
+<%=link_to 'Week 3', bulletin_path(:week => 3), method: :get, class: "btn btn-primary " %>
+  </div>
+
+  <div class="col-xs-3">
+<%=link_to 'Week 4', bulletin_path(:week => 4), method: :get, class: "btn btn-primary" %>
+  </div>
+</div>
 </br>
-</br>
-
 <%=form_tag('/bulletin', method: :get) do %>
 <% if @container%>
+<div class="">
 <%=select_tag( "day", options_for_select(@container))%>
-<%=submit_tag "search", class: "btn btn-success"%>
+</div>
+</br>
+<%=submit_tag "search", class: "btn btn-success btn-block"%>
 <% else %>
+<div class="">
 <%= select_tag("day")%>
-<%= submit_tag "search", class: "btn btn-success" %>
+</div>
+</br>
+<%= submit_tag "search", class: "btn btn-success btn-block" %>
 <%end %>
 <%end%>
 

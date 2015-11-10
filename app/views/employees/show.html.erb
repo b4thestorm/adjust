@@ -10,7 +10,7 @@
 	<button class="btn btn-warning btn-block">Notification Type</button>
 	</div>
 
-	<div class="notify-container">
+	<div class="notify-container col-sm-12">
 		<p> Notification Type: </p>
 			<%=form_tag employee_message_choice_path(@employee), method: 'post' do %>
 				<%if @employee.flag == 'email'%>
