@@ -1,62 +1,62 @@
-<h1>Profile: <%=@employee.full_name%></h1>
+
+<h1 class="profile-name">Profile: <%=@employee.full_name%></h1>
 </hr>
 <%=link_to 'To Bulletin', employee_shifts_path(@employee), class: "btn btn-success"%>
 <%= link_to 'Add Shift', new_employee_shift_path(current_employee.id), class: "btn btn-primary"%>
 </br>
 </br>
 
-<p> Notification Type: </p>
-<%=form_tag employee_message_choice_path(@employee), method: 'post' do %>
-<%if @employee.flag == 'email'%>
-<%= radio_button_tag 'flag', 'email', :checked => true %> Email
-<%else%>
-<%= radio_button_tag 'flag', 'email'%> Email
-<%end%>
-<%if @employee.flag == 'text_message'%>
-<%= radio_button_tag 'flag', 'text_message', :checked => true %> Text Message
-<%else%>
-<%= radio_button_tag 'flag', 'text_message'%> Text Message
-<%end%>
-<%= submit_tag 'Set' %>
-<%end%>
-</br>
+	<div class='notify-hover'>
+	<h3>Notification Type</h3>
+	</div>
 
-<p>Stop Notifications: 
-<%= form_tag employee_stop_request_path(@employee), method:'post' do %>
-<% if @employee.alert == 'yes' %>
-<%= radio_button_tag 'choice', 'yes', :checked => true %> Yes
-<% else %>
-<%= radio_button_tag 'choice', 'yes'%> Yes
-<%end%>
-<% if @employee.alert == 'no' %>
-<%= radio_button_tag 'choice', 'no', :checked => true %> No
-<% else %>
-<%= radio_button_tag 'choice', 'no'%> No
-<%end%>
-<%= submit_tag 'Set'%>
-<%end%>
+	<div class="notify-container">
+		<p> Notification Type: </p>
+			<%=form_tag employee_message_choice_path(@employee), method: 'post' do %>
+				<%if @employee.flag == 'email'%>
+			<%= radio_button_tag 'flag', 'email', :checked => true %> Email
+				<%else%>
+			<%= radio_button_tag 'flag', 'email'%> Email
+				<%end%>
+				<%if @employee.flag == 'text_message'%>
+			<%= radio_button_tag 'flag', 'text_message', :checked => true %> Text Message
+				<%else%>
+			<%= radio_button_tag 'flag', 'text_message'%> Text Message
+				<%end%>
+			<%= submit_tag 'Set' %>
+				<%end%>
+	</br>
+		<p>Stop Notifications:</p>
+		<%= form_tag employee_stop_request_path(@employee), method:'post' do %>
+			<% if @employee.alert == 'yes' %>
+		<%= radio_button_tag 'choice', 'yes', :checked => true %> Yes
+			<% else %>
+		<%= radio_button_tag 'choice', 'yes'%> Yes
+			<%end%>
+			<% if @employee.alert == 'no' %>
+		<%= radio_button_tag 'choice', 'no', :checked => true %> No
+			<% else %>
+		<%= radio_button_tag 'choice', 'no'%> No
+			<%end%>
+		<%= submit_tag 'Set'%>
+			<%end%>
+	</div>
 
-<h2> My Shifts</h2>
-<table class="table">
+<div class='shift-hover'>
+<h3> My Shifts</h3>
+</div>
+
+<table class="table shift-container">
 	<tr>
-	<th>Shift Id</th>
 	<th>Date</th>
 	<th>Position</th>
 	<th>Remove</th>
 	</tr>
 		<% @shift.each do |shift|%>
 	<tr> 
-		<td><%= shift.id%></td>
-		<td><%=shift.shift_day.strftime("%m/%d")%></td>
+		<td><%=shift.shift_day.strftime("%b-%d")%></td>
         <td><%="#{shift.position}"%></td> 
         <td><%=link_to 'Remove', employee_shift_path(current_employee, shift.id) , method: :delete, data: { confirm: "Are you sure?" } %></td>
 	</tr>
 		<%end%>
 </table>
-
- <h2>Shifts I Want</h2>
-<!-- -->
-Coming Soon 
-<ul>
-
-</ul>
