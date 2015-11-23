@@ -6,11 +6,15 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
+   <style>
+    body { padding-top: 70px;}
+  </style>
 </head>
 
 <body> 
+
   <!-- NavBar  -->
-<div class="navbar navbar-inverse navbar-static-top ">
+<div class="navbar navbar-inverse navbar-fixed-top ">
     <div class="container">
       <div class="navbar-header">
         <%= link_to 'SHIFTLIST.CO', dashboard_path, class: "navbar-brand" %>
@@ -35,7 +39,6 @@
 </div>
 
 <!-- navbar-right -->
-<div class="container">
 <!-- Flash Alert -->
 <% flash.each do |type, message| %>
   <div class="alert alert-<%=type%> fade in">
@@ -44,7 +47,7 @@
   </div>
 <% end %>
 <%= yield %>
-</div>
+
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" />
 <%= javascript_include_tag( :application) %>

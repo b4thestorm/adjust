@@ -1,18 +1,48 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.Jumbotron {
-  height: 350px;
-  margin-bottom: 0px;
-    background-image: url(http://assets3.thrillist.com/v1/image/1178253/size/tl-horizontal_main_2x/check-out-the-killer-brooklyn-offices-of-film-tech-startup-vhx);
-    background-position: 0% 25%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: white;
-    text-shadow: black 0.3em 0.3em 0.3em;
+
+html body {
+  margin: 0;
+  padding: 0;
 }
 
-.container {
-  width: 100%;
 
+header {
+margin: 0;
+padding: 0;
+background-color: #b3ffff;
+height: 100vh;
+background-size: cover;
+color: #000;
+font-family: 'Arial';
+  text-align: center;
+}
+
+.content {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  
+}
+
+a.ghost {
+  color: red;
+  border: 1px solid red;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  width: 200px;
+  padding: 8px;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  transition: color 0.3s ease-out, background-color 0.3s ease-out;
+}
+
+a.ghost:hover, a.ghost:focus {
+  background-color: #f5f5f5;
+  color: #000;
+  transition: color 0.3s ease-in, background-color 0.3s ease-out;
 }
