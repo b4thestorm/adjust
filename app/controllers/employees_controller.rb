@@ -14,7 +14,8 @@ class EmployeesController < ApplicationController
 		@employee = Employee.new(employee_params)
 		#current_account.employees << Employee.new(employee_params)
 		if @employee.save
-			session[:employee_id] = @employee
+			session[:employee_id] = @employee.id
+			binding.pry
 			flash[:success] = "Successfully Registered"
 			redirect_to bulletin_path
 		else
