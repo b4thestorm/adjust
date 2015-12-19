@@ -4,15 +4,13 @@
     }
 </style>
 
+<div class="container">
 <h1 class="col-xs-12 text-center">Bulletin</h1> 
 <hr/>
 <body>
 <%if logged_in?%>
 
 <p class="text-center">All available shifts</p> 
-
-<h3 class="text-center">Week of <%= Date.today.strftime("%b %Y")%></h3>
-
 
 <div class="row">
 <div>
@@ -46,28 +44,35 @@
 <%end %>
 <%end%>
 
+<h1>All Available Shifts</h1>
+<h5>Today <%= Date.today.strftime("%B %d") %></h5>
 <!-- Pressing the week shouldnt reset the days-->
-<p class="pull-right"> Total Shifts <span class="badge"><%= @shifts.count%></span></p>
-<div id="wrapper">
-	<div id="columns">
-		<% @shifts.each do |shift|%>
-				<div class='pin' data-day='<%=shift.shift_day.strftime("%A").downcase%>'>
- 			 		<%= image_tag "shift.jpg", class: "img-responsive" %>
- 			 		<%= shift.employee.full_name%>
-        </br>
-  				<%= shift.shift_day.strftime "%m/%d/%Y"%>
-        </br>
-          <%= "#{shift.start.strftime("%I:%M%P")} - #{shift.end.strftime(" %I:%M%P")}"%>
-          <%if shift.employee_id != current_employee.id %>
-  				<%=button_to "Request", notify_employee_shift_path(shift.employee_id, shift.id)%>
-          <%end%>
-				</div>
-		<%end%> 		
-  </div>
-</div>
-			
-<%end%>
 
+<div id="total">
+<p class="pull-right"> Total Shifts <span class="badge"><%= @shifts.count%></span></p>
+</div>
+ <ul>
+		<% @shifts.each do |shift|%>
+    <li>
+      <div class="panel-heading"><h4><%= shift.employee.full_name%></h4></div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+  			   <%= shift.shift_day.strftime "%m/%d/%Y"%>
+           <%= "#{shift.start.strftime("%I:%M%P")} - #{shift.end.strftime(" %I:%M%P")}"%>
+        <div class="panel-footer"> 
+        <%if shift.employee_id != current_employee.id %>
+        <%=button_to "Request", notify_employee_shift_path(shift.employee_id, shift.id)%>
+        <%else%>
+          Shift Not Available
+        <%end%>  
+        </div>
+       </div>
+      </div>
+    </li>
+		<%end%> 	
+<%end%>
+</ul>
+</div>
 </body>
 
 

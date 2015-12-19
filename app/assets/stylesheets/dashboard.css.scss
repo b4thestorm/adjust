@@ -14,28 +14,29 @@ padding: 0;
 background-color: #b3ffff;
 height: 100vh;
 background-size: cover;
-color: #000;
+color: black;
 font-family: 'Arial';
   text-align: center;
 }
-
+.header-content {
+  text-align: center;
+}
 .content {
-  position: absolute;
-  top: 30%;
-  left: 30%;
-  
+  display: inline-block;
+  position: relative;
+  top: 150px;
 }
 
 a.ghost {
   color: red;
   border: 1px solid red;
-  display: inline-block;
+  display: block;
   position: absolute;
+  left: 50%;
+  margin-left: -85px;
   top: 50%;
-  left: 30%;
-  width: 200px;
+  width: 150px;
   padding: 8px;
-  margin: 10px;
   text-align: center;
   text-decoration: none;
   transition: color 0.3s ease-out, background-color 0.3s ease-out;
