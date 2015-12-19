@@ -5,13 +5,13 @@ class ShiftsController < ApplicationController
 def index
 	# paginate(:page => params[:page], :per_page => 5)
 	# @shift = Employee.where(id: session[:employee_id]).take
-	@shifts = Shift.all
+	@shifts = Shift.all.paginate(:page => params[:page], :per_page => 2)
 	@new_instance = Shift.new
 	if params[:week]
 	@container = @new_instance.weeks(params[:week])
 	end
 	if params[:day]
-	@shifts = Shift.find_by_sql(["SELECT * FROM shifts WHERE shift_day = ?", params[:day] ])
+	@shifts = Shift.find_by_sql(["SELECT * FROM shifts WHERE shift_day = ?", params[:day] ]).paginate(:page => params[:page], :per_page => 10 )
 	end
 end
 
