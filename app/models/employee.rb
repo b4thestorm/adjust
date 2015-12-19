@@ -27,19 +27,13 @@ class Employee < ActiveRecord::Base
    def set_alert(type)
     self.alert = type
     self.save
-    end 
+   end 
   
-	# default_scope { where(account_id: Account.current_id )}
-	 
 
 	 def full_name 
 	 	f_name + " " + l_name
 	 end
 
- 
 
 
-	# def self.scoped_to(account)
-	# 	where(:account_id => account.id)
-	# end	
 end
