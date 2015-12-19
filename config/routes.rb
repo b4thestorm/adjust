@@ -10,7 +10,7 @@ Rails.application.routes.draw do
  end
 end
 end
-root to: 'employees#new', as: :register
+get '/register', to: 'employees#new'
 get '/login', to: 'sessions#new'
 post '/login', to: 'sessions#create'
 get '/logout', to: 'sessions#destroy'
@@ -21,7 +21,7 @@ post '/accounts', to: 'accounts#create', as: :accounts
 
 
 
-get '/dashboard', to: 'dashboard#index'
+root to: 'dashboard#index', as: '/dashboard'
 
 
 end
