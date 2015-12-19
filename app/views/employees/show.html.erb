@@ -1,7 +1,7 @@
-
-<h1 class="profile-name text-center">Profile: <%=@employee.f_name%></h1>
+<div class="container top">
+<h1 class="profile-name text-center">Profile: <%=@employee.f_name.upcase%></h1>
 <hr>
-<%=link_to 'To Bulletin', employee_shifts_path(@employee), class: "btn btn-block btn-danger"%>
+<%=link_to 'Back', employee_shifts_path(@employee), class: "btn btn-block btn-danger"%>
 </br>
 <%= link_to 'Add Shift', new_employee_shift_path(current_employee.id), class: "btn btn-block btn-primary"%>
 </br>
@@ -60,3 +60,4 @@
 	</tr>
 		<%end%>
 </table>
+</div>
